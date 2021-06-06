@@ -14,7 +14,8 @@ class NewsCardList extends StatelessWidget {
     // list of news
     Widget NewsList(state) {
       return ListView.builder(
-        itemBuilder: (context, idx) => NewsCard(state.news[sourceName][idx]),
+        itemBuilder: (context, idx) =>
+            Center(child: NewsCard(state.news[sourceName][idx])),
         itemCount:
             state.news[sourceName] != null ? state.news[sourceName].length : 0,
       );

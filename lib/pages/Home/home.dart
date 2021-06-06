@@ -87,7 +87,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               ),
             ),
             SliverAppBar(
-              backgroundColor: Colors.white,
+              backgroundColor: Theme.of(context).accentColor,
               title: Container(
                 alignment: Alignment.centerLeft,
                 padding: EdgeInsets.only(left: 0),
@@ -101,8 +101,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   isScrollable: true,
                   indicator: UnderlineTabIndicator(),
                   labelColor: Colors.black,
-                  labelStyle:
-                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  labelStyle: Theme.of(context).textTheme.headline5,
                   unselectedLabelColor: Colors.black45,
                   unselectedLabelStyle:
                       TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
