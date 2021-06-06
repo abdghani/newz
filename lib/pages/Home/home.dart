@@ -16,7 +16,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   late NewsBloc newsBloc;
 
   _smoothScrollToTop() {
-    _scrollController.animateTo(0,
+    _scrollController.animateTo(kToolbarHeight,
         duration: Duration(microseconds: 300), curve: Curves.ease);
     fetchNews(sourceList[_tabController.index].id);
   }
@@ -61,7 +61,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
     return NestedScrollView(
         controller: _scrollController,
-        headerSliverBuilder: (context, value) {
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
             SliverToBoxAdapter(
               child: Container(
@@ -86,29 +86,35 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 ),
               ),
             ),
-            SliverToBoxAdapter(
-                child: Container(
-              alignment: Alignment.centerLeft,
-              padding: EdgeInsets.only(left: 25),
-              child: TabBar(
-                onTap: (index) {
-                  fetchNews(sourceList[index].id);
-                },
-                labelPadding: EdgeInsets.only(right: 15),
-                indicatorSize: TabBarIndicatorSize.label,
-                controller: _tabController,
-                isScrollable: true,
-                indicator: UnderlineTabIndicator(),
-                labelColor: Colors.black,
-                labelStyle:
-                    TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                unselectedLabelColor: Colors.black45,
-                unselectedLabelStyle:
-                    TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
-                tabs: List.generate(sourceList.length,
-                    (index) => Text(sourceList[index].name.toString())),
+            SliverAppBar(
+              backgroundColor: Colors.white,
+              title: Container(
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.only(left: 0),
+                child: TabBar(
+                  onTap: (index) {
+                    fetchNews(sourceList[index].id);
+                  },
+                  labelPadding: EdgeInsets.only(right: 15),
+                  indicatorSize: TabBarIndicatorSize.label,
+                  controller: _tabController,
+                  isScrollable: true,
+                  indicator: UnderlineTabIndicator(),
+                  labelColor: Colors.black,
+                  labelStyle:
+                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  unselectedLabelColor: Colors.black45,
+                  unselectedLabelStyle:
+                      TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
+                  tabs: List.generate(sourceList.length,
+                      (index) => Text(sourceList[index].name.toString())),
+                ),
               ),
-            ))
+              floating: true,
+              pinned: true,
+              expandedHeight: 10.0,
+              forceElevated: innerBoxIsScrolled,
+            ),
           ];
         },
         body: Container(

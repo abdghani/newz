@@ -25,8 +25,6 @@ class NewsCardList extends StatelessWidget {
             child: Text(state.message),
           ),
         );
-
-    //bloc
     return BlocBuilder<NewsBloc, NewsState>(
       builder: (context, state) {
         if (state is NewsLoading) {

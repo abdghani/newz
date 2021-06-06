@@ -43,12 +43,8 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         }
         yield NewsLoaded(currentNews);
       } catch (err) {
-        if (err is DioError) {
-          NetworkExceptions execp = NetworkExceptions.getDioException(err);
-          yield NewsError(NetworkExceptions.getErrorMessage(execp));
-        } else {
-          yield NewsError("Unknown error occured");
-        }
+        NetworkExceptions _excep = NetworkExceptions.getDioException(err);
+        yield NewsError(NetworkExceptions.getErrorMessage(_excep));
       }
     }
   }
