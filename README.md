@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://flutter.io/">
-    <img src="https://diegolaballos.com/files/images/flutter-icon.jpg" alt="Logo" width=72 height=72>
+  <a href="https://flutter.io/" target="_blank">
+    <img src="https://i.ibb.co/WxWm3Rp/icon.jpg" alt="Logo" width=72 height=72>
   </a>
 
   <h3 align="center">Newz</h3>
