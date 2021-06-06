@@ -7,7 +7,7 @@ String baseUrl = 'https://newsapi.org/v2/';
 
 dynamic getSourceNews(String src) async {
   String key = getKeys();
-  String sourceUrl = "${baseUrl}top-headlines?sources=$src&apiKey=${key}1";
+  String sourceUrl = "${baseUrl}top-headlines?sources=$src&apiKey=$key";
   var response = await Dio().get(sourceUrl);
   return response.data;
 
