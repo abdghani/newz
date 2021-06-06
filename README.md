@@ -1,16 +1,40 @@
-# newz
+<p align="center">
+  <a href="https://flutter.io/">
+    <img src="https://diegolaballos.com/files/images/flutter-icon.jpg" alt="Logo" width=72 height=72>
+  </a>
 
-A new Flutter project.
+  <h3 align="center">Newz</h3>
 
-## Getting Started
+  <p align="center">
+    A News application made using flutter
+    <br>
+     Made using <a href="http://newsapi.org/">NewsApi</a>
+    <br>
+    <br>
+    <a href="https://github.com/abdghani/newz/issues/new">Report bug</a>
+    ·
+    <a href="https://github.com/abdghani/newz/issues/new">Request feature</a>
+  </p>
+</p>
 
-This project is a starting point for a Flutter application.
+## Quick start
 
-A few resources to get you started if this is your first Flutter project:
+This is a normal flutter app. You should follow the instructions in the [official documentation](https://flutter.io/docs/get-started/install).
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## What's included
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- _bloc_ implementation using [flutter_bloc](https://pub.dev/packages/flutter_bloc)
+- Filter page for quick access
+- Responsive layout
+- Changelog generation
+- Following the [best practices](https://angular.io/guide/styleguide)!
+
+## Creators
+
+**Abdullah Ghani**
+
+- <https://github.com/abdghani>
+
+## Copyright and license
+
+Code and documentation copyright 2018 the authors. Code released under the [MIT License](https://github.com/Ismaestro/flutter-example-app/blob/master/LICENSE).
