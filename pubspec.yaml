@@ -39,6 +39,14 @@ dependencies:
   flutter_tags: "^1.0.0-nullsafety.1"
   flutter_launcher_icons: "^0.9.0"
   freezed_annotation: ^0.14.2
+  bottom_navy_bar: ^6.0.0
+  google_fonts: ^2.1.0
+  flutter_svg: ^0.22.0
+  find_dropdown: ^1.0.0
+  shared_preferences: ^2.0.6
+  flutter_switch: ^0.3.1
+  google_ml_kit: ^0.6.0
+  provider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
@@ -47,10 +55,10 @@ dev_dependencies:
   freezed:
 
 flutter_icons:
-  image_path: "assets/images/icon.jpg"
+  image_path: "assets/images/app-icon.png"
   adaptive_icon_background: "#EA7819"
   android: true
-  ios: false
+  ios: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -64,6 +72,9 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/images/flags/
+    - assets/images/categories/
+    - assets/images/sources/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

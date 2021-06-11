@@ -18,7 +18,10 @@ class AppLoader extends StatelessWidget {
         SizedBox(height: 10),
         Text(
           loadingText,
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context)
+              .textTheme
+              .subtitle2!
+              .copyWith(fontWeight: FontWeight.bold, fontSize: 15),
         ),
       ],
     );

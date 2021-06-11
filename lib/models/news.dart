@@ -7,6 +7,7 @@ class News {
   String? urlToImage;
   String? publishedAt;
   String? content;
+  String? lang;
 
   News(
       {this.source,
@@ -16,7 +17,8 @@ class News {
       this.url,
       this.urlToImage,
       this.publishedAt,
-      this.content});
+      this.content,
+      this.lang});
 
   News.fromJson(Map<String, dynamic> json) {
     source =
@@ -28,6 +30,7 @@ class News {
     urlToImage = json['urlToImage'];
     publishedAt = json['publishedAt'];
     content = json['content'];
+    lang = json['lang'];
   }
 
   Map<String, dynamic> toJson() {
@@ -42,6 +45,7 @@ class News {
     data['urlToImage'] = this.urlToImage;
     data['publishedAt'] = this.publishedAt;
     data['content'] = this.content;
+    data['lang'] = this.lang;
     return data;
   }
 }
