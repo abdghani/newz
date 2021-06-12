@@ -72,51 +72,51 @@ class MyThemes with ChangeNotifier {
         ),
       )),
       textTheme: TextTheme(
-          headline1: TextStyle(
-              color: Colors.grey,
-              fontSize: 45,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'RobotoCondensed'),
-          headline2: TextStyle(
-              color: Colors.grey,
-              fontSize: 35,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'RobotoCondensed'),
-          headline3: TextStyle(
-              color: Colors.grey,
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'RobotoCondensed'),
-          headline4: TextStyle(
-              color: Colors.grey,
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'RobotoCondensed'),
-          headline5: TextStyle(
-              color: Colors.grey,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'RobotoCondensed'),
-          headline6: TextStyle(
-              color: Colors.grey,
-              fontSize: 15,
-              fontWeight: FontWeight.normal,
-              fontFamily: 'RobotoCondensed'),
-          subtitle1: TextStyle(
-              color: Colors.grey,
-              fontSize: 16,
-              fontWeight: FontWeight.normal,
-              fontFamily: 'RobotoCondensed'),
-          caption: TextStyle(
-              color: Colors.grey,
-              fontSize: 14,
-              fontWeight: FontWeight.normal,
-              fontFamily: 'RobotoCondensed'),
-          subtitle2: TextStyle(
-              color: Colors.grey,
-              fontSize: 12,
-              fontWeight: FontWeight.normal,
-              fontFamily: 'RobotoCondensed')));
+          headline1: GoogleFonts.raleway(
+            color: Colors.white60,
+            fontSize: 45,
+            fontWeight: FontWeight.bold,
+          ),
+          headline2: GoogleFonts.raleway(
+            color: Colors.white60,
+            fontSize: 35,
+            fontWeight: FontWeight.bold,
+          ),
+          headline3: GoogleFonts.raleway(
+            color: Colors.white60,
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+          ),
+          headline4: GoogleFonts.raleway(
+            color: Colors.white60,
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
+          headline5: GoogleFonts.raleway(
+            color: Colors.white60,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+          headline6: GoogleFonts.raleway(
+            color: Colors.white60,
+            fontSize: 15,
+            fontWeight: FontWeight.normal,
+          ),
+          subtitle1: GoogleFonts.raleway(
+            color: Colors.grey,
+            fontSize: 16,
+            fontWeight: FontWeight.normal,
+          ),
+          caption: GoogleFonts.raleway(
+            color: Colors.grey,
+            fontSize: 14,
+            fontWeight: FontWeight.normal,
+          ),
+          subtitle2: GoogleFonts.raleway(
+            color: Colors.grey,
+            fontSize: 12,
+            fontWeight: FontWeight.normal,
+          )));
 
   void switchTheme() {
     _isDark = !_isDark;

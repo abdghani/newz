@@ -22,7 +22,7 @@ class NewsCard extends StatelessWidget {
         : authName;
   }
 
-  // used to launch in browser
+  // launch in browser
   void _launchURL(_url) async {
     await launch(_url);
   }
@@ -83,7 +83,6 @@ class NewsCard extends StatelessWidget {
                                             fontWeight: FontWeight.w900,
                                             fontSize: 12,
                                             color: Colors.grey[500])),
-                              // if (news.description != null) Divider()
                             ],
                           ),
                         );

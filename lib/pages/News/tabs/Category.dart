@@ -6,8 +6,6 @@ import 'package:newz/models/category.dart';
 import 'package:newz/pages/News/bloc/channels_bloc.dart';
 import 'package:newz/pages/News/component/categoryNewsList.dart';
 import 'package:newz/resuable/circleTabIndicator.dart';
-import 'package:newz/util/preferences.dart';
-import 'package:provider/provider.dart';
 
 class Categories extends StatefulWidget {
   @override
@@ -55,9 +53,6 @@ class _CategoriesState extends State<Categories>
 
   @override
   Widget build(BuildContext context) {
-    var prefProvider = Provider.of<PrefProvider>(context, listen: false);
-    prefProvider.setInitialPreferences();
-
     getCatName(String name) {
       if (name == 'entertainment') {
         return 'Movies';
@@ -108,7 +103,6 @@ class _CategoriesState extends State<Categories>
                     indicator: CircleTabIndicator(
                         color: Theme.of(context).primaryColor, radius: 0),
                     labelPadding: EdgeInsets.only(right: 10, top: 10),
-                    // indicatorColor: Theme.of(context).accentColor,
                     controller: _tabController,
                     isScrollable: true,
                     labelColor: Theme.of(context).primaryColor,

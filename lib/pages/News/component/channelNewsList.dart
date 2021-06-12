@@ -19,7 +19,7 @@ class ChannelNewsList extends StatelessWidget {
     var prefProvider = Provider.of<PrefProvider>(context);
 
     Widget NewsList(state) {
-      if (state.news[sourceName] == null) return AppLoader('loading...');
+      if (state.news[sourceName] == null) return AppLoader('Loading...');
       List<News> allNews = state.news[sourceName];
       List<News> filteredNews = [];
       if (prefProvider.prefs['defaultEnglish'] == true) {
@@ -34,7 +34,7 @@ class ChannelNewsList extends StatelessWidget {
               itemCount: filteredNews.length,
             )
           : NoData('No News',
-              'Disable `English news`  to view news  of all languages');
+              'Disable `English news` in settings to view news of all languages');
     }
 
     Widget errorContent(state) => Container(

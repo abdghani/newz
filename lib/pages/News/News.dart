@@ -5,6 +5,8 @@ import 'package:newz/pages/News/tabs/Category.dart';
 import 'package:newz/pages/News/tabs/Channels.dart';
 import 'package:newz/pages/News/tabs/Region.dart';
 import 'package:newz/pages/News/tabs/Settings.dart';
+import 'package:newz/util/preferences.dart';
+import 'package:provider/provider.dart';
 
 class NewsContainer extends StatefulWidget {
   @override
@@ -21,6 +23,8 @@ class _NewsContainerState extends State<NewsContainer> {
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: _pageIndex);
+    var prefProvider = Provider.of<PrefProvider>(context, listen: false);
+    prefProvider.setInitialPreferences();
   }
 
   @override

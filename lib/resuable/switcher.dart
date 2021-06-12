@@ -8,8 +8,8 @@ Widget switcher(
   dynamic onChange, {
   String enableText = '',
   String disableText = '',
-  Icon activeIcons = const Icon(Icons.check, color: Colors.grey),
-  Icon inactiveIcons = const Icon(Icons.close, color: Colors.grey),
+  Icon activeIcons = const Icon(Icons.check, color: Colors.white70),
+  Icon inactiveIcons = const Icon(Icons.close, color: Colors.white70),
 }) {
   FlutterSwitch swchIcon;
 

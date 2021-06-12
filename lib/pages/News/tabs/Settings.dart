@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:newz/resuable/appLoader.dart';
 import 'package:newz/resuable/switcher.dart';
 import 'package:newz/util/preferences.dart';
 import 'package:provider/provider.dart';
 import 'package:newz/themes/dark_theme_provider.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 
 class Settings extends StatefulWidget {
   @override

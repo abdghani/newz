@@ -31,8 +31,6 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     getCurrentAppTheme();
-    // var projectSt = Provider.of<PrefProvider>(context, listen: false);
-    // projectSt.setInitialPreferences();
   }
 
   @override
