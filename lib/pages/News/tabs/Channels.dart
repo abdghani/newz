@@ -5,6 +5,8 @@ import 'package:newz/pages/News/bloc/channels_bloc.dart';
 import 'package:newz/pages/News/component/filterChannel.dart';
 import 'package:newz/pages/News/component/channelNewsList.dart';
 import 'package:newz/resuable/circleTabIndicator.dart';
+import 'package:newz/util/preferences.dart';
+import 'package:provider/provider.dart';
 
 class Channels extends StatefulWidget {
   @override
@@ -16,12 +18,7 @@ class _ChannelsState extends State<Channels>
   late ScrollController _scrollController;
   late TabController _tabController;
   late ChannelsBloc channelsBloc;
-
-  _smoothScrollToTop() {
-    _scrollController.animateTo(kToolbarHeight,
-        duration: Duration(microseconds: 300), curve: Curves.ease);
-    fetchNews(sourceList[_tabController.index].id);
-  }
+  List<Sources> activeSourceList = [];
 
   @override
   void dispose() {
@@ -33,11 +30,34 @@ class _ChannelsState extends State<Channels>
   @override
   void initState() {
     super.initState();
+    var prefProvider = Provider.of<PrefProvider>(context, listen: false);
+    if (prefProvider.prefs['defaultEnglish'] == true) {
+      activeSourceList = sourceList
+          .where((Sources element) => element.language == 'en')
+          .toList();
+    } else {
+      activeSourceList = sourceList;
+    }
+    initControllers();
+    fetchInitialNews();
+  }
+
+  _smoothScrollToTop() {
+    _scrollController.animateTo(kToolbarHeight,
+        duration: Duration(microseconds: 300), curve: Curves.ease);
+    fetchNews(activeSourceList[_tabController.index].id);
+  }
+
+  initControllers() {
     _scrollController = ScrollController();
-    _tabController = TabController(length: sourceList.length, vsync: this);
+    _tabController =
+        TabController(length: activeSourceList.length, vsync: this);
     _tabController.addListener(_smoothScrollToTop);
+  }
+
+  fetchInitialNews() {
     channelsBloc = BlocProvider.of<ChannelsBloc>(context);
-    channelsBloc.add(GetChannelNews(sourceList[0].id.toString()));
+    channelsBloc.add(GetChannelNews(activeSourceList[0].id.toString()));
   }
 
   // fetching news from bloc
@@ -58,8 +78,8 @@ class _ChannelsState extends State<Channels>
           isScrollControlled: true,
           builder: (_) => FilterChannel()).then((value) {
         if (value != null) {
-          int idx =
-              sourceList.indexWhere((Sources element) => element.id == value);
+          int idx = activeSourceList
+              .indexWhere((Sources element) => element.id == value);
           _tabController.animateTo(idx, duration: Duration(milliseconds: 300));
         }
       });
@@ -79,7 +99,7 @@ class _ChannelsState extends State<Channels>
                       flex: 12,
                       child: TabBar(
                         onTap: (index) {
-                          fetchNews(sourceList[index].id);
+                          fetchNews(activeSourceList[index].id);
                         },
                         indicator: CircleTabIndicator(
                             color: Theme.of(context).primaryColor, radius: 0),
@@ -101,9 +121,9 @@ class _ChannelsState extends State<Channels>
                         unselectedLabelColor:
                             Theme.of(context).textTheme.subtitle2!.color,
                         tabs: List.generate(
-                            sourceList.length,
+                            activeSourceList.length,
                             (index) =>
-                                WidgetChannelNameCard(sourceList[index])),
+                                WidgetChannelNameCard(activeSourceList[index])),
                       ),
                     ),
                     Expanded(
@@ -111,7 +131,7 @@ class _ChannelsState extends State<Channels>
                       child: GestureDetector(
                         onTap: showFilter,
                         child: Icon(
-                          Icons.filter_list,
+                          Icons.filter_alt,
                           color: Theme.of(context).primaryColor,
                         ),
                       ),
@@ -129,8 +149,10 @@ class _ChannelsState extends State<Channels>
           body: Container(
             child: TabBarView(
               controller: _tabController,
-              children: List.generate(sourceList.length,
-                  (index) => ChannelNewsList(sourceList[index].id.toString())),
+              children: List.generate(
+                  activeSourceList.length,
+                  (index) =>
+                      ChannelNewsList(activeSourceList[index].id.toString())),
             ),
             padding: EdgeInsets.symmetric(horizontal: 15),
           )),

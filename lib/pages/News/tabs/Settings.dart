@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:newz/pages/News/bloc/channels_bloc.dart';
 import 'package:newz/resuable/switcher.dart';
 import 'package:newz/util/preferences.dart';
 import 'package:provider/provider.dart';
@@ -23,6 +25,8 @@ class _SettingsState extends State<Settings> {
     });
     var prefProvider = Provider.of<PrefProvider>(context, listen: false);
     prefProvider.setAppPreferences(appPrefs);
+    var channelsBloc = BlocProvider.of<ChannelsBloc>(context);
+    channelsBloc.add(SetInitialNews());
   }
 
   setInitialPreferences() async {

@@ -8,6 +8,14 @@ abstract class ChannelsEvent extends Equatable {
 }
 
 // gets a news from a source
+class SetInitialNews extends ChannelsEvent {
+  const SetInitialNews();
+
+  @override
+  List<Object> get props => [];
+}
+
+// gets a news from a source
 class GetChannelNews extends ChannelsEvent {
   final String source;
   const GetChannelNews(this.source);
@@ -25,7 +33,8 @@ class GetRegionNews extends ChannelsEvent {
 
 class GetCategoryNews extends ChannelsEvent {
   final String name;
-  const GetCategoryNews(this.name);
+  final bool defaultEnglish;
+  const GetCategoryNews(this.name, this.defaultEnglish);
   @override
-  List<Object> get props => [name];
+  List<Object> get props => [name, defaultEnglish];
 }

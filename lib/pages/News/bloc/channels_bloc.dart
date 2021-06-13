@@ -18,6 +18,9 @@ class ChannelsBloc extends Bloc<ChannelsEvent, ChannelsState> {
 
   @override
   Stream<ChannelsState> mapEventToState(ChannelsEvent event) async* {
+    if (event is SetInitialNews) {
+      yield NewsInitial();
+    }
     if (event is GetChannelNews) {
       // if its initial state SourceNewsLoaded
       // state is yielded with no value
@@ -76,7 +79,8 @@ class ChannelsBloc extends Bloc<ChannelsEvent, ChannelsState> {
 
         if (currentNews[event.name] == null) {
           yield NewsLoading();
-          dynamic newsFetched = await getCategoryNews(event.name);
+          dynamic newsFetched = await getCategoryNews(event.name,
+              defaultEnglish: event.defaultEnglish);
           dynamic articles = await parselanguage(newsFetched['articles']);
           List<News> newsparsed =
               articles.map<News>((_news) => News.fromJson(_news)).toList();

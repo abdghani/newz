@@ -23,8 +23,6 @@ class _NewsContainerState extends State<NewsContainer> {
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: _pageIndex);
-    var prefProvider = Provider.of<PrefProvider>(context, listen: false);
-    prefProvider.setInitialPreferences();
   }
 
   @override

@@ -36,15 +36,17 @@ dynamic getRegionNews(String code, String cat) async {
   }
 }
 
-dynamic getCategoryNews(String catName) async {
+dynamic getCategoryNews(String catName, {bool defaultEnglish = false}) async {
   if (demo == false) {
     String key = getKeys();
     String sourceUrl =
         "${baseUrl}top-headlines?category=$catName&apiKey=$key&pageSize=100";
+    if (defaultEnglish == true) {
+      sourceUrl += '&language=en';
+    }
     var response = await Dio().get(sourceUrl);
     return response.data;
   } else {
-    // a future repsonse to mimic api
     return Future.delayed(Duration(milliseconds: 2000), () {
       return jsonrep;
     });

@@ -6,6 +6,8 @@ import 'package:newz/models/category.dart';
 import 'package:newz/pages/News/bloc/channels_bloc.dart';
 import 'package:newz/pages/News/component/categoryNewsList.dart';
 import 'package:newz/resuable/circleTabIndicator.dart';
+import 'package:newz/util/preferences.dart';
+import 'package:provider/provider.dart';
 
 class Categories extends StatefulWidget {
   @override
@@ -17,9 +19,10 @@ class _CategoriesState extends State<Categories>
   late ScrollController _scrollController;
   late TabController _tabController;
   late ChannelsBloc channelsBloc;
+  bool defaultEnglish = false;
 
   _smoothScrollToTop() {
-    _scrollController.animateTo(kToolbarHeight,
+    _scrollController.animateTo(0,
         duration: Duration(microseconds: 300), curve: Curves.ease);
     fetchNews(categoryList[_tabController.index].name);
   }
@@ -32,23 +35,29 @@ class _CategoriesState extends State<Categories>
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
-
-  @override
   void initState() {
     super.initState();
     _scrollController = ScrollController();
     _tabController = TabController(length: categoryList.length, vsync: this);
     _tabController.addListener(_smoothScrollToTop);
+    getInitialNews();
+  }
+
+  getInitialNews() async {
+    var prefProvider = Provider.of<PrefProvider>(context, listen: false);
+    if (prefProvider.prefs != null) {
+      setState(() {
+        defaultEnglish = prefProvider.prefs['defaultEnglish'];
+      });
+    }
     channelsBloc = BlocProvider.of<ChannelsBloc>(context);
-    channelsBloc.add(GetCategoryNews(categoryList[0].name.toString()));
+    channelsBloc
+        .add(GetCategoryNews(categoryList[0].name.toString(), defaultEnglish));
   }
 
   // fetching news from bloc
   fetchNews(String? code) {
-    channelsBloc.add(GetCategoryNews(code.toString()));
+    channelsBloc.add(GetCategoryNews(code.toString(), defaultEnglish));
   }
 
   @override

@@ -15,7 +15,7 @@ class RegionNewsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // list of news
-    var prefProvider = Provider.of<PrefProvider>(context);
+    var prefProvider = Provider.of<PrefProvider>(context, listen: false);
 
     Widget NewsList(state) {
       if (state.news[code] == null) return AppLoader('Loading...');

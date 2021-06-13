@@ -3,6 +3,8 @@ import 'package:flutter_tags/flutter_tags.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:newz/models/sources.dart';
 import 'package:intl/intl.dart';
+import 'package:newz/util/preferences.dart';
+import 'package:provider/provider.dart';
 
 class FilterChannel extends StatefulWidget {
   @override
@@ -11,24 +13,20 @@ class FilterChannel extends StatefulWidget {
 
 class _FilterChannelState extends State<FilterChannel> {
   String sortField = 'category';
-  List<Sources> filteredChannels = sourceList;
 
-  // sortChannels(field) {
-  //   filteredChannels = {};
-  //   sourceList.forEach((source) {
-  //     String fieldValue = source.toJson()[field].toString();
-  //     if (filteredChannels[fieldValue] == null) {
-  //       filteredChannels[fieldValue] = [source];
-  //     } else {
-  //       filteredChannels[fieldValue]!.add(source);
-  //     }
-  //   });
-  // }
+  late List<Sources> filteredChannels;
 
   @override
   void initState() {
     super.initState();
-    // sortChannels(sortField);
+    var prefProvider = Provider.of<PrefProvider>(context, listen: false);
+    if (prefProvider.prefs['defaultEnglish'] == true) {
+      filteredChannels = sourceList
+          .where((Sources element) => element.language == 'en')
+          .toList();
+    } else {
+      filteredChannels = sourceList;
+    }
   }
 
   filterChannels(value) {
@@ -39,7 +37,6 @@ class _FilterChannelState extends State<FilterChannel> {
     setState(() {
       filteredChannels = temp;
     });
-    // print(temp);
   }
 
   @override
@@ -94,7 +91,7 @@ class _FilterChannelState extends State<FilterChannel> {
 
     return Container(
       color: Theme.of(context).backgroundColor,
-      margin: EdgeInsets.only(top: 30),
+      margin: EdgeInsets.only(top: 60),
       height: MediaQuery.of(context).size.height,
       child: NestedScrollView(
         floatHeaderSlivers: true,
