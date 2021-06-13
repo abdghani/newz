@@ -28,8 +28,11 @@ class CategoryNewsList extends StatelessWidget {
       }
       return filteredNews.length != 0
           ? ListView.builder(
-              itemBuilder: (context, idx) =>
-                  Center(child: NewsCard(filteredNews[idx])),
+              itemBuilder: (context, idx) => Center(
+                  child: NewsCard(
+                filteredNews[idx],
+                key: ValueKey(filteredNews[idx].uid),
+              )),
               itemCount: filteredNews.length,
             )
           : NoData('No News',

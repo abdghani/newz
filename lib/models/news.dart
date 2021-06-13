@@ -1,3 +1,5 @@
+import 'package:uuid/uuid.dart';
+
 class News {
   Source? source;
   String? author;
@@ -8,6 +10,7 @@ class News {
   String? publishedAt;
   String? content;
   String? lang;
+  String? uid;
 
   News(
       {this.source,
@@ -31,6 +34,7 @@ class News {
     publishedAt = json['publishedAt'];
     content = json['content'];
     lang = json['lang'];
+    uid = Uuid().v4().toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -46,6 +50,7 @@ class News {
     data['publishedAt'] = this.publishedAt;
     data['content'] = this.content;
     data['lang'] = this.lang;
+    data['uid'] = this.uid;
     return data;
   }
 }

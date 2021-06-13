@@ -17,7 +17,7 @@ class AppLoader extends StatelessWidget {
         ),
         SizedBox(height: 10),
         Text(
-          loadingText,
+          loadingText.toLowerCase(),
           style: Theme.of(context)
               .textTheme
               .subtitle2!
