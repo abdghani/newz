@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
             return MaterialApp(
                 scaffoldMessengerKey: _messangerKey,
                 debugShowCheckedModeBanner: false,
-                title: 'Zaream',
+                title: 'Vantage',
                 routes: {
                   '/news': (context) => NewsContainer(),
                 },

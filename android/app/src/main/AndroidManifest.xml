@@ -2,7 +2,7 @@
     package="com.example.newz">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="Zaream"
+        android:label="Vantage"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
